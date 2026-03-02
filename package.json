@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tsx watch server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bash test.sh"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
