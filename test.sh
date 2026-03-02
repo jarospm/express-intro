@@ -3,7 +3,7 @@ BASE="http://localhost:3000"
 
 echo "=== GET / ==="
 curl -s "$BASE/"
-echo -e "\n"
+echo
 
 echo "=== GET /users ==="
 curl -s "$BASE/users" | jq .
@@ -17,7 +17,7 @@ echo
 
 echo "=== GET /greet ==="
 curl -s "$BASE/greet"
-echo -e "\n"
+echo
 
 echo "=== POST /submit ==="
 curl -s -X POST "$BASE/submit" \
