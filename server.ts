@@ -42,6 +42,25 @@ app.get('/random-person', async (_req, res) => {
   });
 });
 
+// Zod schema for validating user input on POST /users
+const UserSchema = z.object({
+  name: z.string().min(3).max(12),
+  age: z.number().min(18).max(100).optional().default(28),
+  email: z.email().transform((s) => s.toLowerCase()),
+});
+
+// Accept a user object, validate with Zod, return 201 or 400
+app.post('/users', (req, res) => {
+  const result = UserSchema.safeParse(req.body);
+
+  if (!result.success) {
+    res.status(400).json(z.treeifyError(result.error));
+    return;
+  }
+
+  res.status(201).json({ user: result.data });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
