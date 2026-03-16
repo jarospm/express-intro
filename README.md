@@ -1,6 +1,6 @@
 # Express + Zod API
 
-An Express API that fetches data from the RandomUser API and validates input with Zod.
+An Express API that fetches data from the RandomUser API and validates input with Zod (v4).
 
 ## Setup
 
@@ -23,3 +23,16 @@ With the server running:
 ```bash
 npm test
 ```
+
+## PostgreSQL
+
+The project includes a `compose.yml` for running PostgreSQL and pgAdmin via Docker.
+
+```bash
+docker compose up
+```
+
+- **pgAdmin:** `http://localhost:8080` (login: `admin@admin.com` / `root`)
+- **PostgreSQL:** `localhost:5432` (user: `root` / `root`, database: `game_studio`)
+
+Sample queries in `queries.sql`.
