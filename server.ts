@@ -61,6 +61,36 @@ app.post('/users', (req, res) => {
   res.status(201).json({ user: result.data });
 });
 
+// Zod schema for the login fields from RandomUser API
+const RandomLoginSchema = z.object({
+  results: z.array(
+    z.object({
+      login: z.object({
+        username: z.string(),
+      }),
+      registered: z.object({
+        date: z.string(),
+      }),
+    })
+  ),
+});
+
+// Fetch a random user's login info and registered date
+app.get('/random-login', async (_req, res) => {
+  const response = await fetch('https://randomuser.me/api/');
+  const data = await response.json();
+  const parsed = RandomLoginSchema.parse(data);
+
+  const user = parsed.results[0];
+  const registeredDate = user.registered.date.slice(0, 10);
+
+  res.json({
+    username: user.login.username,
+    registeredDate,
+    summary: `${user.login.username} (registered on ${registeredDate})`,
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

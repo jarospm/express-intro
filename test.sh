@@ -26,3 +26,7 @@ curl -s -X POST "$BASE/users" \
   -H "Content-Type: application/json" \
   -d '{"name": "AB", "age": 5, "email": "not-an-email"}' | jq .
 echo
+
+echo "=== GET /random-login ==="
+curl -s "$BASE/random-login" | jq .
+echo
