@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tsx watch index.ts",
+    "seed": "docker exec -i postgres_container psql -U root -d game_studio < seed.sql",
     "test:zod": "bash test-routes-zod.sh",
     "test:pg": "bash test-routes-pg.sh"
   },
