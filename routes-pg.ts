@@ -13,4 +13,18 @@ export function pgRoutes(app: Express) {
 
     res.json(result.rows);
   });
+
+  // Top 3 players with highest total scores across all games
+  app.get('/top-players', async (_req, res) => {
+    const result = await pool.query(`
+      SELECT p.name, SUM(s.score) AS total_score
+      FROM scores s
+      INNER JOIN players p ON s.player_id = p.id
+      GROUP BY p.name
+      ORDER BY total_score DESC
+      LIMIT 3
+    `);
+
+    res.json(result.rows);
+  });
 }

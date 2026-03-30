@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
-import { zodRoutes } from './zod-routes.js';
-import { pgRoutes } from './pg-routes.js';
+import { zodRoutes } from './routes-zod.js';
+import { pgRoutes } from './routes-pg.js';
 
 const app = express();
 const PORT = 3000;

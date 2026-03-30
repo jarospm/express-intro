@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tsx watch index.ts",
-    "test": "bash test.sh"
+    "test:zod": "bash test-routes-zod.sh",
+    "test:pg": "bash test-routes-pg.sh"
   },
   "keywords": [],
   "author": "",
