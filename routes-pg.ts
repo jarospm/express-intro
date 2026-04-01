@@ -50,7 +50,7 @@ router.get('/top-players', async (req, res) => {
   const parsed = TopPlayersQuery.safeParse(req.query);
 
   if (!parsed.success) {
-    res.status(400).json({ errors: z.treeifyError(parsed.error) });
+    res.status(400).json(z.treeifyError(parsed.error));
     return;
   }
 
@@ -97,7 +97,7 @@ router.get('/recent-players', async (req, res) => {
   const parsed = RecentPlayersQuery.safeParse(req.query);
 
   if (!parsed.success) {
-    res.status(400).json({ errors: z.treeifyError(parsed.error) });
+    res.status(400).json(z.treeifyError(parsed.error));
     return;
   }
 
@@ -116,7 +116,7 @@ router.post('/players', async (req, res) => {
   const parsed = CreatePlayerBody.safeParse(req.body);
 
   if (!parsed.success) {
-    res.status(400).json({ errors: z.treeifyError(parsed.error) });
+    res.status(400).json(z.treeifyError(parsed.error));
     return;
   }
 
@@ -136,7 +136,7 @@ router.post('/games', async (req, res) => {
   const parsed = CreateGameBody.safeParse(req.body);
 
   if (!parsed.success) {
-    res.status(400).json({ errors: z.treeifyError(parsed.error) });
+    res.status(400).json(z.treeifyError(parsed.error));
     return;
   }
 
@@ -156,7 +156,7 @@ router.post('/scores', async (req, res) => {
   const parsed = CreateScoreBody.safeParse(req.body);
 
   if (!parsed.success) {
-    res.status(400).json({ errors: z.treeifyError(parsed.error) });
+    res.status(400).json(z.treeifyError(parsed.error));
     return;
   }
 
