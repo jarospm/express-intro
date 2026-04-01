@@ -13,7 +13,7 @@ const RandomPersonSchema = z.object({
       location: z.object({
         country: z.string(),
       }),
-    })
+    }),
   ),
 });
 
@@ -34,7 +34,7 @@ const RandomLoginSchema = z.object({
       registered: z.object({
         date: z.string(),
       }),
-    })
+    }),
   ),
 });
 

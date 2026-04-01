@@ -16,11 +16,15 @@ const envSchema = z.object({
 const validatedEnv = envSchema.safeParse(process.env);
 
 if (!validatedEnv.success) {
-  console.error('Invalid environment variables:', z.treeifyError(validatedEnv.error));
+  console.error(
+    'Invalid environment variables:',
+    z.treeifyError(validatedEnv.error),
+  );
   process.exit(1);
 }
 
-const { PG_HOST, PG_PORT, PG_USER, PG_PASSWORD, PG_DATABASE } = validatedEnv.data;
+const { PG_HOST, PG_PORT, PG_USER, PG_PASSWORD, PG_DATABASE } =
+  validatedEnv.data;
 
 const app = express();
 const PORT = 3000;

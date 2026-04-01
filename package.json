@@ -7,7 +7,9 @@
     "dev": "npx tsx watch index.ts",
     "seed": "docker exec -i postgres_container psql -U root -d game_studio < seed.sql",
     "test:zod": "bash test-routes-zod.sh",
-    "test:pg": "bash test-routes-pg.sh"
+    "test:pg": "bash test-routes-pg.sh",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +22,16 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "@types/pg": "^8.20.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.58.0"
   }
 }

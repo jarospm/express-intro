@@ -61,7 +61,7 @@ router.get('/top-players', async (req, res) => {
      GROUP BY p.name
      ORDER BY total_score DESC
      LIMIT $1`,
-    [parsed.data.limit]
+    [parsed.data.limit],
   );
 
   res.json(result.rows);
@@ -105,7 +105,7 @@ router.get('/recent-players', async (req, res) => {
     `SELECT name, join_date
      FROM players
      WHERE join_date >= CURRENT_DATE - make_interval(days => $1)`,
-    [parsed.data.days]
+    [parsed.data.days],
   );
 
   res.json(result.rows);
@@ -125,7 +125,7 @@ router.post('/players', async (req, res) => {
     `INSERT INTO players (name, join_date)
      VALUES ($1, $2)
      RETURNING *`,
-    [name, join_date ?? new Date().toISOString().slice(0, 10)]
+    [name, join_date ?? new Date().toISOString().slice(0, 10)],
   );
 
   res.status(201).json(result.rows[0]);
@@ -145,7 +145,7 @@ router.post('/games', async (req, res) => {
     `INSERT INTO games (title, genre)
      VALUES ($1, $2)
      RETURNING *`,
-    [title, genre]
+    [title, genre],
   );
 
   res.status(201).json(result.rows[0]);
@@ -165,7 +165,12 @@ router.post('/scores', async (req, res) => {
     `INSERT INTO scores (player_id, game_id, score, date_played)
      VALUES ($1, $2, $3, $4)
      RETURNING *`,
-    [player_id, game_id, score, date_played ?? new Date().toISOString().slice(0, 10)]
+    [
+      player_id,
+      game_id,
+      score,
+      date_played ?? new Date().toISOString().slice(0, 10),
+    ],
   );
 
   res.status(201).json(result.rows[0]);
